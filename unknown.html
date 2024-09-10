@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sindbad</title>
+    <link rel="stylesheet" href="myStyle.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                Sindbad the sailor will get 100 random numbers in a row.<br>
+                At any point, he can pick the last number, but then he is 'locked in',<br>
+                he can no longer change his choice. He wins if the number he picked <br>
+                happens to be the largest out of the 100. Help Sindbad win! <br><br>
+                Number of players: 
+                <input id="playerIn" value="1" type="number" step="1" min="1" max="5">
+                <br><br>
+                <button id="nextBtn">Next number</button>
+                <br> 
+                Each number is uniformly drawn from
+                the range [0 to <var>max</var>&rpar;, <br>
+                and <var>max</var> is uniformly drawn from
+                the range [200,<output id="upperOut"></output>&rpar; at
+                <br> the beginning of the game.
+                <output id="gameType" style="visibility: hidden">unknown</output>
+                <br><br>
+                <button id="waitBtn">Wait until next largest number!</button>
+                <br><br>
+                Current number: <output id="numOut"></output> Numbers left: <output id="leftOut"></output>
+                <br><br>
+            </td>
+            <td align="center">
+                <img src="sindbad.jpg" width="75%"><br>
+                Cropped drawing of Milo Winter, via
+                <a href="https://en.wikipedia.org/wiki/Sinbad_the_Sailor#/media/File:Having_balanced_my_cargo_exactly.jpg">
+                    Wikipedia
+                </a> 
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="pick1Btn" style="background-color: red; color: white">Pick this number!</button>
+            </td>
+            <td>
+                <button id="pick2Btn" style="background-color: green; color: white; visibility: hidden">Pick this number!</button>
+            </td>
+            <td>
+                <button id="pick3Btn" style="background-color: blue; color: white; visibility: hidden">Pick this number!</button>
+            </td>
+            <td>
+                <button id="pick4Btn" style="background-color: rgb(248,221,189); visibility: hidden;">Pick this number!</button>
+            </td>
+            <td>
+                <button id="pick5Btn" style="background-color: yellow; visibility: hidden;">Pick this number!</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label id="pick1Lbl">Player 1 pick: </label>
+                <output id="pick1Out"></output>
+            </td>
+            <td>
+                <label id="pick2Lbl" style="visibility: hidden">Player 2 pick: </label>
+                <output id="pick2Out"></output>
+            </td>
+            <td>
+                <label id="pick3Lbl" style="visibility: hidden">Player 3 pick: </label>
+                <output id="pick3Out"></output>
+            </td>
+            <td>
+                <label id="pick4Lbl" style="visibility: hidden">Player 4 pick: </label>
+                <output id="pick4Out"></output>
+            </td>
+            <td>
+                <label id="pick5Lbl" style="visibility: hidden">Player 5 pick: </label>
+                <output id="pick5Out"></output>
+            </td>
+        </tr>
+    </table>
+    <br>
+    Largest out of 100: <output id="maxOut"></output> <button id="newGameBtn" style="visibility: hidden;">New game</button>
+    <label id="maxRevealLbl" style="visibility: hidden"><var>max</var>:</label>
+    <output id="upLimOut"></output>
+    <br>
+    <canvas id="rasterCanvas" width="804" height="720" style="border: 1px solid black"></canvas>
+</body>
+<script src="sindbadScript.js"></script>
+</html>
