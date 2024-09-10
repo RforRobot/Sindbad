@@ -60,51 +60,53 @@ function drawColumn(height, x, color) {
     }
 }
 
-function drawPixel(x, y, color) {
+function drawPixel(x, y, colorString) {
 
-    var r;
-    var g;
-    var b;
+    var color = new Color(colorString);
 
-    switch (color) {
-        case 'black':
-            r = 0;
-            g = 0;
-            b = 0;
-        break;
-        case 'red':
-            r = 200;
-            g = 0;
-            b = 0;
-        break;
-        case 'green':
-            r = 0;
-            g = 128;
-            b = 0;
-        break;
-        case 'blue':
-            r = 0;
-            g = 0;
-            b = 200;
-        break;
-        case 'pink':
-            r = 248;
-            g = 221;
-            b = 189
-        break;
-        case 'yellow':
-            r = 200;
-            g = 200;
-            b = 0;
-        break;
-        case 'gray':
-            r = 150;
-            g = 150;
-            b = 150;
-        break;
-        default:
-          console.log(`Invalid color ${color} given.`);
-      }
+    var r = color.r;
+    var g = color.g;
+    var b = color.b;
+
+    // switch (color) {
+    //     case 'black':
+    //         r = 0;
+    //         g = 0;
+    //         b = 0;
+    //     break;
+    //     case 'red':
+    //         r = 200;
+    //         g = 0;
+    //         b = 0;
+    //     break;
+    //     case 'green':
+    //         r = 0;
+    //         g = 128;
+    //         b = 0;
+    //     break;
+    //     case 'blue':
+    //         r = 0;
+    //         g = 0;
+    //         b = 200;
+    //     break;
+    //     case 'pink':
+    //         r = 248;
+    //         g = 221;
+    //         b = 189
+    //     break;
+    //     case 'yellow':
+    //         r = 200;
+    //         g = 200;
+    //         b = 0;
+    //     break;
+    //     case 'gray':
+    //         r = 150;
+    //         g = 150;
+    //         b = 150;
+    //     break;
+    //     default:
+    //       console.log(`Invalid color ${color} given.`);
+    //   }
 
 
     var pixelIndex = 4 * (canvas.width * y + x);
@@ -123,7 +125,10 @@ function drawHorizontalLine(height,color) {
 }
 
 function clearCanvas() {
-    for (var i = 0; i < data.length; i++) {
-        data[i] = 255;
+    for (var i = 0; i < data.length; i+=4) {
+        data[i + 0] = 193; // R value
+        data[i + 1] = 182; // G value
+        data[i + 2] = 90; // B value
+        data[i + 3] = 255; // A value <- Alpha, transparency 
     }
 }

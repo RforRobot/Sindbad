@@ -26,7 +26,7 @@ function changeNumberOfPlayers() {
         pickLbl[i].style.visibility="visible";
         // console.log(i + " visible");
     }
-    for(var i = playerIn.value; i <4; i++) {
+    for(var i = playerIn.value; i < 5; i++) {
         pickBtn[i].style.visibility="hidden";
         pickLbl[i].style.visibility="hidden";
         // console.log(i + " hidden");
@@ -54,7 +54,7 @@ function waitForLarge() {
         nextNum();
     } 
 
-    drawHistogram();g
+    drawHistogram();
 }
 
 
