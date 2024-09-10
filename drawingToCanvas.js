@@ -55,7 +55,7 @@ function drawColumn(height, x, color) {
     for (var xi = x - 1; xi < x + 3; xi++) {
         for (var yi = canvas.height; yi > canvas.height - height; yi--) {
             // console.log("xi: " + xi + " yi: " + yi);
-            drawPixel(xi, yi, color); // black pixels
+            drawPixel(xi, yi, color);
         }
     }
 }
@@ -64,56 +64,11 @@ function drawPixel(x, y, colorString) {
 
     var color = new Color(colorString);
 
-    var r = color.r;
-    var g = color.g;
-    var b = color.b;
-
-    // switch (color) {
-    //     case 'black':
-    //         r = 0;
-    //         g = 0;
-    //         b = 0;
-    //     break;
-    //     case 'red':
-    //         r = 200;
-    //         g = 0;
-    //         b = 0;
-    //     break;
-    //     case 'green':
-    //         r = 0;
-    //         g = 128;
-    //         b = 0;
-    //     break;
-    //     case 'blue':
-    //         r = 0;
-    //         g = 0;
-    //         b = 200;
-    //     break;
-    //     case 'pink':
-    //         r = 248;
-    //         g = 221;
-    //         b = 189
-    //     break;
-    //     case 'yellow':
-    //         r = 200;
-    //         g = 200;
-    //         b = 0;
-    //     break;
-    //     case 'gray':
-    //         r = 150;
-    //         g = 150;
-    //         b = 150;
-    //     break;
-    //     default:
-    //       console.log(`Invalid color ${color} given.`);
-    //   }
-
-
     var pixelIndex = 4 * (canvas.width * y + x);
 
-    data[pixelIndex + 0] = r; // R value
-    data[pixelIndex + 1] = g; // G value
-    data[pixelIndex + 2] = b; // B value
+    data[pixelIndex + 0] = color.r; // R value
+    data[pixelIndex + 1] = color.g; // G value
+    data[pixelIndex + 2] = color.b; // B value
     data[pixelIndex + 3] = 255; // A value <- Alpha, transparency 
 }
 

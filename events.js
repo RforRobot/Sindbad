@@ -77,7 +77,11 @@ function numberPicked(event) {
     playersDone++;
 
     console.log("Players done: " + playersDone + ", still playing: " + (playerIn.value - playersDone));
-    if( playerIn.value <= playersDone) runToEnd();
+    if( playerIn.value <= playersDone) {
+        runToEnd();
+    } else {
+        drawHistogram();       
+    }
     
 }
 
