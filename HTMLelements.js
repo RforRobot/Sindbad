@@ -1,5 +1,6 @@
 // Current gametypes: known or unknown (upper limit)
-const gameType = document.getElementById('gameType').value; 
+const gameTypeSelect = document.getElementById('gameType'); 
+const gameRulesDiv = document.getElementById('gameRules'); 
 
 // Input field for number of players
 const playerIn = document.getElementById('playerIn');
@@ -49,6 +50,4 @@ const upLimOut = document.getElementById('upLimOut');
 
 
 // Putting some values to the HTML
-document.getElementById('upperOut').value = canvas.height;
-
 leftOut.value = 100

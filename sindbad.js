@@ -1,21 +1,16 @@
 // vars for Sindbad problem
-
+// var gameType = gameTypeSelect.value; 
+var gameType;
 var upperLim;
 
-switch(gameType){
-    case 'known':
-    upperLim = canvas.height;
-    break;
-    case 'unknown':
-    upperLim = 200 + Math.floor(Math.random() * (canvas.height - 200));
-    break;
-    default:
-  console.log(`Invalid gametype ${gameType} given.`);
-}
+changeGameType();
+preGameButtons()
+
+var gameInProgress = false;
 
 var nums = []; // stores drawn numbers
 
-var max = 0; // stores largest of nums
+var max; // stores largest of nums
 
 var picks = []; // stores player picks, not really necessary as same info is in HTML labels
 
@@ -27,7 +22,7 @@ var playersDone = 0; // statemachine that simplifies checking whether all player
 function nextNum() {
 
     // disable functionality if game is already over;
-    if (nums.length >= 100) return;
+    // if (nums.length >= 100) return;
 
     var num;
     var notInNums = true;
@@ -47,25 +42,48 @@ function nextNum() {
     }
 
     numOut.value = num;
-    leftOut.value --;
+    leftOut.value--;
 
     console.log(nums.length + ". " + num);
 }
 
 // This function is triggered when all players have picked a number. It runs until no other numbers are left.
 function runToEnd() {
-    
+
     console.log("Running to end");
-    
+
     while (nums.length < 100) {
         nextNum();
     }
-    
-    drawHistogram();
+
+    drawHistogram();    
+
+    gameOver();
+}
+
+function gameOver() {
+    console.log("Game over");
+
+    gameInProgress = false;
+
+    preGameButtons();
+}
+
+// set buttons to out-of-game state (rules can be changed, no moves)
+function preGameButtons() {
+    playerIn.disabled = false;
+    gameTypeSelect.disabled = false;
+    nextBtn.disabled = true;
+    waitBtn.disabled = true;
+}
+
+// set buttons to in-game state (no rule changes, but players can move)
+function midGameButtons() {
+    playerIn.disabled = true;
+    gameTypeSelect.disabled = true;
+    nextBtn.disabled = false;
+    waitBtn.disabled = false;
 }
 
 
-// function for manual drawing
-function drawIt() {
-    ctx.putImageData(imageData,0,0);
-}
+

@@ -15,13 +15,18 @@
                 happens to be the largest out of the 100. Help Sindbad win! <br><br>
                 Number of players: 
                 <input id="playerIn" value="1" type="number" step="1" min="1" max="5">
-                <br><br>
-                <button id="nextBtn">Next number</button> (from 0 to <output id="upperOut"></output>)
-                <output id="gameType" style="visibility: hidden">known</output>
-                <br><br>
+                Gametype:
+                <select id="gameType">
+                    <option value="known">Known maximum</option>
+                    <option value="unknown">Secret maximum</option>
+                </select>
+                <br>
+                <div id="gameRules"></div>
+                <br>
+                <button id="nextBtn">Next number</button>
                 <button id="waitBtn">Wait until next largest number!</button>
                 <br><br>
-                Current number: <output id="numOut"></output> Numbers left: <output id="leftOut"></output>
+                Current number: <output id="numOut">-</output> Numbers left: <output id="leftOut"></output>
                 <br><br>
             </td>
             <td align="center">
@@ -75,9 +80,11 @@
         </tr>
     </table>
     <br>
-    Largest out of 100: <output id="maxOut"></output> <button id="newGameBtn" style="visibility: hidden;">New game</button>
+    Largest out of 100: <output id="maxOut"></output> <button id="newGameBtn" style="visibility: visible;">New game</button>
+    <label id="maxRevealLbl" style="visibility: hidden"><var>max</var>:</label>
+    <output id="upLimOut"></output>
     <br>
-    <canvas id="rasterCanvas" width="804" height="720" style="border: 1px solid black"></canvas>
+    <canvas id="rasterCanvas" width="804" height="400" style="border: 1px solid black"></canvas>
 </body>
 <script src="HTMLelements.js"></script>
 <script src="events.js"></script>

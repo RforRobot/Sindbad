@@ -1,3 +1,6 @@
+// TODO: refactor using this example: 
+// const rgbPixel = { r: 255, g: 0, b: 0 }; // Red
+
 class Color {
 
     r;
