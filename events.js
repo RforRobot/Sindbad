@@ -128,6 +128,11 @@ function numberPicked(event) {
 }
 
 function newGame() {
+    if(gameInProgress) {
+        var sure = window.confirm("Game in progress; do you want to start a new one?");
+        if(!sure) return;
+    }
+
     gameInProgress = true;
 
     clearCanvas();
@@ -145,8 +150,6 @@ function newGame() {
     pickNo = [];
 
     playersDone = 0;
-
-    newGameBtn.style.visibility = "hidden";
 
     leftOut.value = 100;
 
@@ -166,4 +169,5 @@ function newGame() {
         upperLim = 200 + Math.floor(Math.random() * (canvas.height - 200));
     }
 
+    get1Num();
 }
