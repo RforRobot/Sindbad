@@ -19,34 +19,22 @@ playerColors.push('yellow');
 function drawHistogram() {
     clearCanvas();
 
-    var i = 1;
+    var colIndex = 1;
 
     for (num of nums) {
-        drawColumn(num, (columnWidth + 2)*i - 2,'black')
-        i++;
-    } 
-
-    if( playerIn.value > playersDone && nums.length < 100) {
-        // still playing case
-        drawHorizontalLine(num,'gray');
-    } else {
-        // game over case
-        drawHorizontalLine(max,'gray');
-
-        newGameBtn.style.visibility = "visible";
-        
-        if (gameType == 'unknown') {
-          maxRevealLbl.style.visibility = "visible";
-          upLimOut.value = upperLim;
-        }
+        drawColumn(num, (columnWidth + 2) * colIndex - 2, 'black')
+        colIndex++;
     }
 
-    for (var i=0; i<playerIn.value; i++) {
+    drawHorizontalLine(nums[nums.length - 1], 'gray');
+
+    for (var i = 0; i < playerIn.value; i++) {
         drawColumn(picks[i], (columnWidth + 2) * pickNo[i] - 2, playerColors[i])
         drawHorizontalLine(picks[i], playerColors[i]);
     }
 
     ctx.putImageData(imageData, 0, 0);
+
 }
 
 // height of column and x coordinate at which column is drawn
@@ -60,6 +48,7 @@ function drawColumn(height, x, color) {
     }
 }
 
+
 function drawPixel(x, y, colorString) {
 
     var color = new Color(colorString);
@@ -72,7 +61,7 @@ function drawPixel(x, y, colorString) {
     data[pixelIndex + 3] = 255; // A value <- Alpha, transparency 
 }
 
-function drawHorizontalLine(height,color) {
+function drawHorizontalLine(height, color) {
 
     for (var xi = 0; xi < canvas.width; xi++) {
         drawPixel(xi, canvas.height - height, color); // grey pixels
@@ -80,7 +69,7 @@ function drawHorizontalLine(height,color) {
 }
 
 function clearCanvas() {
-    for (var i = 0; i < data.length; i+=4) {
+    for (var i = 0; i < data.length; i += 4) {
         data[i + 0] = 193; // R value
         data[i + 1] = 182; // G value
         data[i + 2] = 90; // B value

@@ -28,7 +28,7 @@ function nextNum() {
     var notInNums = true;
 
     while (notInNums) {
-        var num = Math.floor(Math.random() * upperLim);
+        num = Math.floor(Math.random() * upperLim);
         if (nums.indexOf(num) === -1) {
             notInNums = false;
         }
@@ -63,6 +63,11 @@ function runToEnd() {
 
 function gameOver() {
     console.log("Game over");
+
+    if (gameType == 'unknown') {
+        maxRevealLbl.style.visibility = "visible";
+        upLimOut.value = upperLim;
+    }
 
     gameInProgress = false;
 
