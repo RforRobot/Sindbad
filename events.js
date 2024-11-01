@@ -10,12 +10,11 @@ waitBtn.addEventListener("click", waitForLarge);
 
 newGameBtn.addEventListener("click", newGame);
 
-for (var i = 0; i < pickBtn.length; i++) {
-    pickBtn[i].addEventListener("click", function (e) {
-        numberPicked(e)
-    });
-}
+document.addEventListener("keydown",keyEventHandler);
 
+for (var i = 0; i < pickBtn.length; i++) {
+    pickBtn[i].addEventListener("click", pickClick);
+}
 
 // functions
 
@@ -99,14 +98,17 @@ function waitForLarge() {
 }
 
 
-
-function numberPicked(event) {
+function pickClick(event) {
     if(!gameInProgress) return;
 
     var btnIndex = pickBtn.indexOf(event.target);
-
+    
     console.log("Player " + (btnIndex + 1) + " pick button pressed");
 
+    numberPicked(btnIndex);
+}
+
+function numberPicked(btnIndex) {
     // No new or 'empty' picks allowed
     if (picks[btnIndex] > 0 || nums.length == 0) return;
 
@@ -170,4 +172,21 @@ function newGame() {
     }
 
     get1Num();
+}
+
+
+function keyEventHandler(event) {
+    console.log("Event.code is: " + event.code);
+    if(gameInProgress) {
+        const callback = {
+            "KeyN" : get1Num,
+            "KeyW" : waitForLarge
+        }[event.code]
+        callback?.();
+    } else {
+        const callback = {
+            "KeyN" : newGame,
+        }[event.code]
+        callback?.();
+    }
 }
