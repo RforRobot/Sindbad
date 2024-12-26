@@ -107,12 +107,13 @@ function showWinner() {
         }
     }
 
-    if(weHaveAWinner) {
-        new Audio('audio/clap_audio.mp3').play();
-    } else {
-        new Audio('audio/trombone_audio.mp3').play();
+    if (window.location.href != 'https://giskardhobby.neocities.org/sindbad/') {
+        if (weHaveAWinner) {
+            new Audio('audio/clap_audio.mp3').play();
+        } else {
+            new Audio('audio/trombone_audio.mp3').play();
+        }
     }
-
 }
 
 function labelBlinker(i, blinkCounter) {
@@ -125,10 +126,10 @@ function labelBlinker(i, blinkCounter) {
     }
 
     if (blinkCounter % 2 == 0) {
-        pickLbl[i].innerHTML="WINNER!! ";
+        pickLbl[i].innerHTML = "WINNER!! ";
         currentFontSize = 2;
     } else if (blinkCounter % 2 == 1) {
-        pickLbl[i].innerHTML="Player " + (i+1) + " pick: ";
+        pickLbl[i].innerHTML = "Player " + (i + 1) + " pick: ";
         currentFontSize = 1;
     }
 
