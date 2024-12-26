@@ -107,13 +107,14 @@ function showWinner() {
         }
     }
 
-    if (window.location.href != 'https://giskardhobby.neocities.org/sindbad/') {
-        if (weHaveAWinner) {
-            new Audio('audio/clap_audio.mp3').play();
-        } else {
-            new Audio('audio/trombone_audio.mp3').play();
-        }
+    var gitHubPath = 'https://github.com/RforRobot/sindbad/raw/refs/heads/main/audio/';
+
+    if (weHaveAWinner) {
+        new Audio(gitHubPath + 'clap_audio.mp3').play();
+    } else {
+        new Audio(gitHubPath + 'trombone_audio.mp3').play();
     }
+
 }
 
 function labelBlinker(i, blinkCounter) {

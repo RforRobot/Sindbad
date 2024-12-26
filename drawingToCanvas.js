@@ -35,6 +35,8 @@ function drawHistogram() {
 
     ctx.putImageData(imageData, 0, 0);
 
+    // in papi.js
+    calculateProbability();
 }
 
 // height of column and x coordinate at which column is drawn
