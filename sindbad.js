@@ -44,7 +44,7 @@ function nextNum() {
     numOut.value = num;
     leftOut.value--;
 
-    console.log(nums.length + ". " + num);
+    // console.log(nums.length + ". " + num);
 }
 
 // This function is triggered when all players have picked a number. It runs until no other numbers are left.
@@ -56,13 +56,15 @@ function runToEnd() {
         nextNum();
     }
 
-    drawHistogram();    
+    drawHistogram();
 
     gameOver();
 }
 
 function gameOver() {
     console.log("Game over");
+
+    showWinner();
 
     if (gameType == 'unknown') {
         maxRevealLbl.style.visibility = "visible";
@@ -80,6 +82,7 @@ function preGameButtons() {
     gameTypeSelect.disabled = false;
     nextBtn.disabled = true;
     waitBtn.disabled = true;
+    settingsBtn.disabled = true;
 }
 
 // set buttons to in-game state (no rule changes, but players can move)
@@ -88,6 +91,49 @@ function midGameButtons() {
     gameTypeSelect.disabled = true;
     nextBtn.disabled = false;
     waitBtn.disabled = false;
+    settingsBtn.disabled = false;
+}
+
+function showWinner() {
+
+    var blinkCounter = 0;
+    var weHaveAWinner = false;
+
+    for (var i = 0; i < playerIn.value; i++) {
+        if (pickOut[i].value == max) {
+            console.log("Player " + i + " won!");
+            labelBlinker(i, blinkCounter);
+            weHaveAWinner = true;
+        }
+    }
+
+    if(weHaveAWinner) {
+        new Audio('audio/clap_audio.mp3').play();
+    } else {
+        new Audio('audio/trombone_audio.mp3').play();
+    }
+
+}
+
+function labelBlinker(i, blinkCounter) {
+
+
+    if (blinkCounter > 10) {
+        return;
+    } else {
+        blinkCounter++;
+    }
+
+    if (blinkCounter % 2 == 0) {
+        pickLbl[i].innerHTML="WINNER!! ";
+        currentFontSize = 2;
+    } else if (blinkCounter % 2 == 1) {
+        pickLbl[i].innerHTML="Player " + (i+1) + " pick: ";
+        currentFontSize = 1;
+    }
+
+    setTimeout(labelBlinker, 500, i, blinkCounter);
+
 }
 
 

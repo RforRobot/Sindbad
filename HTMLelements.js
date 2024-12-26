@@ -32,6 +32,9 @@ const waitBtn = document.getElementById('waitBtn');
 // New game button
 const newGameBtn = document.getElementById('newGameBtn');
 
+// Game settings button
+const settingsBtn = document.getElementById('settingsBtn');
+
 // Output field that displays the largest number out of the 100
 const maxOut = document.getElementById('maxOut');
 

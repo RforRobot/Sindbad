@@ -10,6 +10,8 @@ waitBtn.addEventListener("click", waitForLarge);
 
 newGameBtn.addEventListener("click", newGame);
 
+// settingsBtn.addEventListener("click", preGameButtons);
+
 document.addEventListener("keydown",keyEventHandler);
 
 for (var i = 0; i < pickBtn.length; i++) {
