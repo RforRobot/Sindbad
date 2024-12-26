@@ -77,6 +77,10 @@ function get1Num() {
 
     nextNum();
 
+    if (nums.length >= 100) {
+        gameOver();
+    }
+
     drawHistogram();
 }
 
