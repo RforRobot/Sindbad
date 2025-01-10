@@ -8,10 +8,6 @@ const playerIn = document.getElementById('playerIn');
 // Main display canvas
 const canvas = document.getElementById('rasterCanvas');
 
-// for prob calc
-const papiOut = document.getElementById('papi');
-const papiOut2 = document.getElementById('papi2');
-
 // Player buttons for picking a number
 var pickBtn = [];
 // Output fields for picked numbers
